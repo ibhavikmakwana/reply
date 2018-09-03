@@ -89,11 +89,30 @@ class _MyHomePageState extends State<MyHomePage> {
         final item = items[index];
 
         if (item is HeadingItem) {
-          return ListTile(
-            title: Text(
-              item.heading,
-              style: Theme.of(context).textTheme.headline,
-            ),
+          return Column(
+            children: <Widget>[
+              Text(
+                item.heading,
+                style: Theme
+                    .of(context)
+                    .textTheme
+                    .body1,
+              ),
+              Text(
+                item.heading,
+                style: Theme
+                    .of(context)
+                    .textTheme
+                    .headline,
+              ),
+              Text(
+                item.heading,
+                style: Theme
+                    .of(context)
+                    .textTheme
+                    .body1,
+              ),
+            ],
           );
         } else if (item is MessageItem) {
           return ListTile(
