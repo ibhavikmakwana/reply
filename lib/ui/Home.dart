@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:reply/ui/ListItem.dart';
-
-final items = List<ListItem>.generate(
-  25,
-  (i) => i % 6 == 0
-      ? HeadingItem("Heading $i")
-      : MessageItem("Sender $i", "Message body $i"),
-);
+import 'package:reply/ui/data/ListData.dart';
+import 'package:reply/ui/ui/ListItemLayout.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -82,64 +76,29 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget getListViewUI() {
     return ListView.builder(
       // Let the ListView know how many items it needs to build
-      itemCount: items.length,
+      itemCount: itemsModel.length,
       // Provide a builder function. This is where the magic happens! We'll
       // convert each item into a Widget based on the type of item it is.
       itemBuilder: (context, index) {
-        final item = items[index];
-
-        if (item is HeadingItem) {
-          return Card(
-            shape: BeveledRectangleBorder(),
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.max,
-                        children: <Widget>[
-                          Text(
-                            "Google Express - 15 mins ago",
-                            style: Theme.of(context).textTheme.body1,
-                          ),
-                          Text(
-                            "Package Shipped!",
-                            style: Theme.of(context).textTheme.subhead,
-                          ),
-                        ],
-                      ),
-                      CircleAvatar(child: FlutterLogo()),
-                    ],
-                  ),
-                  Text(
-                    item.heading,
-                    style: Theme.of(context).textTheme.body1,
-                  ),
-                ],
-              ),
-            ),
+        final item = itemsModel[index];
+        if (item.imagesData != null) {
+          return ListItemWithoutImages(
+            userName: item.userName,
+            title: item.title,
+            time: item.time,
+            hasAttachment: item.doesHaveAttachment,
+            description: item.description,
+            profilePic: item.profilePic,
           );
-        } else if (item is MessageItem) {
-          return Card(
-            shape: BeveledRectangleBorder(),
-            child: ListTile(
-              title: Text(
-                "Trevor Hansen - 12 hrs ago",
-                style: Theme.of(context).textTheme.body1,
-              ),
-              subtitle: Text(
-                "Highschool reunion?",
-                style: Theme.of(context).textTheme.subhead,
-              ),
-              trailing: CircleAvatar(child: FlutterLogo()),
-            ),
+        } else {
+          return ListItemWithImages(
+            userName: item.userName,
+            title: item.title,
+            time: item.time,
+            hasAttachment: item.doesHaveAttachment,
+            description: item.description,
+            imagesData: item.imagesData,
+            profilePic: item.profilePic,
           );
         }
       },
@@ -148,49 +107,51 @@ class _MyHomePageState extends State<MyHomePage> {
 
   modalBottomSheet() {
     showModalBottomSheet(
-        context: context,
-        builder: (context) => Material(
-              color: Colors.blueGrey,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(16.0),
-                  topRight: Radius.circular(16.0),
+      context: context,
+      builder: (context) =>
+          Material(
+            color: Colors.blueGrey,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(16.0),
+                topRight: Radius.circular(16.0),
+              ),
+            ),
+            child: ListView(
+              children: <Widget>[
+                new ListTile(
+                  leading: new Icon(Icons.inbox),
+                  title: new Text('Inbox'),
+                  onTap: () => null,
                 ),
-              ),
-              child: ListView(
-                children: <Widget>[
-                  new ListTile(
-                    leading: new Icon(Icons.inbox),
-                    title: new Text('Inbox'),
-                    onTap: () => null,
-                  ),
-                  new ListTile(
-                    leading: new Icon(Icons.star_border),
-                    title: new Text('Starred'),
-                    onTap: () => null,
-                  ),
-                  new ListTile(
-                    leading: new Icon(Icons.send),
-                    title: new Text('Sent'),
-                    onTap: () => null,
-                  ),
-                  new ListTile(
-                    leading: new Icon(Icons.delete),
-                    title: new Text('Trash'),
-                    onTap: () => null,
-                  ),
-                  new ListTile(
-                    leading: new Icon(Icons.error_outline),
-                    title: new Text('Spam'),
-                    onTap: () => null,
-                  ),
-                  new ListTile(
-                    leading: new Icon(Icons.drafts),
-                    title: new Text('Drafts'),
-                    onTap: () => null,
-                  ),
-                ],
-              ),
-            ));
+                new ListTile(
+                  leading: new Icon(Icons.star_border),
+                  title: new Text('Starred'),
+                  onTap: () => null,
+                ),
+                new ListTile(
+                  leading: new Icon(Icons.send),
+                  title: new Text('Sent'),
+                  onTap: () => null,
+                ),
+                new ListTile(
+                  leading: new Icon(Icons.delete),
+                  title: new Text('Trash'),
+                  onTap: () => null,
+                ),
+                new ListTile(
+                  leading: new Icon(Icons.error_outline),
+                  title: new Text('Spam'),
+                  onTap: () => null,
+                ),
+                new ListTile(
+                  leading: new Icon(Icons.drafts),
+                  title: new Text('Drafts'),
+                  onTap: () => null,
+                ),
+              ],
+            ),
+          ),
+    );
   }
 }
