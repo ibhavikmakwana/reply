@@ -143,19 +143,21 @@ class ListItemWithImages extends StatelessWidget {
                 ),
               ],
             ),
-            ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                if (imagesData != null) {
-                  final images = imagesData[index];
-                  return Image.network(
-                    images.imageUrl,
-                    fit: BoxFit.cover,
-                  );
-                }
-              },
-              itemCount: imagesData != null ? imagesData.length : 0,
-            )
+            /*Expanded(
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  if (imagesData != null) {
+                    final images = imagesData[index];
+                    return Image.network(
+                      images.imageUrl,
+                      fit: BoxFit.cover,
+                    );
+                  }
+                },
+                itemCount: imagesData != null ? imagesData.length : 0,
+              ),
+            )*/
           ],
         ),
       ),

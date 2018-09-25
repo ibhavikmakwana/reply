@@ -73,6 +73,9 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  /*
+  Build the list view
+   */
   Widget getListViewUI() {
     return ListView.builder(
       // Let the ListView know how many items it needs to build
@@ -110,44 +113,52 @@ class _MyHomePageState extends State<MyHomePage> {
       context: context,
       builder: (context) =>
           Material(
-            color: Colors.blueGrey,
+            color: Color(0xff304049),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(16.0),
                 topRight: Radius.circular(16.0),
               ),
             ),
-            child: ListView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                new ListTile(
-                  leading: new Icon(Icons.inbox),
-                  title: new Text('Inbox'),
-                  onTap: () => null,
-                ),
-                new ListTile(
-                  leading: new Icon(Icons.star_border),
-                  title: new Text('Starred'),
-                  onTap: () => null,
-                ),
-                new ListTile(
-                  leading: new Icon(Icons.send),
-                  title: new Text('Sent'),
-                  onTap: () => null,
-                ),
-                new ListTile(
-                  leading: new Icon(Icons.delete),
-                  title: new Text('Trash'),
-                  onTap: () => null,
-                ),
-                new ListTile(
-                  leading: new Icon(Icons.error_outline),
-                  title: new Text('Spam'),
-                  onTap: () => null,
-                ),
-                new ListTile(
-                  leading: new Icon(Icons.drafts),
-                  title: new Text('Drafts'),
-                  onTap: () => null,
+                FlutterLogo(),
+                Expanded(
+                  child: ListView(
+                    children: <Widget>[
+                      new ListTile(
+                        leading: new Icon(Icons.inbox),
+                        title: new Text('Inbox'),
+                        onTap: () => null,
+                      ),
+                      new ListTile(
+                        leading: new Icon(Icons.star_border),
+                        title: new Text('Starred'),
+                        onTap: () => null,
+                      ),
+                      new ListTile(
+                        leading: new Icon(Icons.send),
+                        title: new Text('Sent'),
+                        onTap: () => null,
+                      ),
+                      new ListTile(
+                        leading: new Icon(Icons.delete),
+                        title: new Text('Trash'),
+                        onTap: () => null,
+                      ),
+                      new ListTile(
+                        leading: new Icon(Icons.error_outline),
+                        title: new Text('Spam'),
+                        onTap: () => null,
+                      ),
+                      new ListTile(
+                        leading: new Icon(Icons.drafts),
+                        title: new Text('Drafts'),
+                        onTap: () => null,
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
