@@ -2,7 +2,7 @@
 
 [![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/ibhavikmakwana) 
 
-Flutter app demonstrate the [Reply](https://material.io/design/material-studies/reply.html#components)
+Flutter app demonstrate the [Reply](https://material.io/design/material-studies/reply.html)
 # Preview
 
 | Sample |
