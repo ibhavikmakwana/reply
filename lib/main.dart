@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reply/ui/ui/detail.dart';
+import 'package:reply/ui/Home.dart';
 
 void main() => runApp(new MyApp());
 
@@ -10,8 +10,9 @@ class MyApp extends StatelessWidget {
       title: 'Reply',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
+          fontFamily: 'WorkSans'
       ),
-      home: DetailView(),
+      home: MyHomePage(),
     );
   }
 }

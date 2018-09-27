@@ -38,10 +38,10 @@ flutter:
   fonts:
     - family: WorkSans
       fonts:
-        - asset: fonts/WorkSans-Black.ttf
-        - asset: fonts/WorkSans-Bold.ttf
-        - asset: fonts/WorkSans-Regular.ttf
-        - asset: fonts/WorkSans-Medium.ttf
+        - asset: assets/fonts/WorkSans-Black.ttf
+        - asset: assets/fonts/WorkSans-Bold.ttf
+        - asset: assets/fonts/WorkSans-Regular.ttf
+        - asset: assets/fonts/WorkSans-Medium.ttf
 
 
 
