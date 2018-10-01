@@ -13,6 +13,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
+  bool isFabVisible = true;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -58,18 +60,21 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       color: Colors.blueGrey,
-      shape: CircularNotchedRectangle(),
+      shape: isFabVisible ? CircularNotchedRectangle() : BoxShape.rectangle,
     );
   }
 
   Widget fabUI() {
-    return FloatingActionButton(
-      backgroundColor: Colors.amberAccent,
-      child: const Icon(
-        Icons.edit,
-        color: Colors.blueGrey,
+    return Visibility(
+      visible: isFabVisible,
+      child: FloatingActionButton(
+        backgroundColor: Colors.amberAccent,
+        child: const Icon(
+          Icons.edit,
+          color: Colors.blueGrey,
+        ),
+        onPressed: () {},
       ),
-      onPressed: () {},
     );
   }
 
@@ -80,20 +85,12 @@ class _MyHomePageState extends State<MyHomePage> {
     return ListView.builder(
       // Let the ListView know how many items it needs to build
       itemCount: itemsModel.length,
+      shrinkWrap: true,
       // Provide a builder function. This is where the magic happens! We'll
       // convert each item into a Widget based on the type of item it is.
       itemBuilder: (context, index) {
         final item = itemsModel[index];
         if (item.imagesData != null) {
-          return ListItemWithoutImages(
-            userName: item.userName,
-            title: item.title,
-            time: item.time,
-            hasAttachment: item.doesHaveAttachment,
-            description: item.description,
-            profilePic: item.profilePic,
-          );
-        } else {
           return ListItemWithImages(
             userName: item.userName,
             title: item.title,
@@ -101,6 +98,15 @@ class _MyHomePageState extends State<MyHomePage> {
             hasAttachment: item.doesHaveAttachment,
             description: item.description,
             imagesData: item.imagesData,
+            profilePic: item.profilePic,
+          );
+        } else {
+          return ListItemWithoutImages(
+            userName: item.userName,
+            title: item.title,
+            time: item.time,
+            hasAttachment: item.doesHaveAttachment,
+            description: item.description,
             profilePic: item.profilePic,
           );
         }

@@ -41,10 +41,13 @@ class DetailView extends StatelessWidget {
       children: <Widget>[
         Expanded(
           flex: 9,
-          child: Text(
-            "High school reunion",
-            softWrap: true,
-            style: TextStyle(fontSize: 48.0),
+          child: Hero(
+            tag: listItemModel.title,
+            child: Text(
+              "High school reunion",
+              softWrap: true,
+              style: TextStyle(fontSize: 48.0),
+            ),
           ),
         ),
         Expanded(
