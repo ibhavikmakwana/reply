@@ -60,7 +60,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       color: Colors.blueGrey,
-      shape: isFabVisible ? CircularNotchedRectangle() : BoxShape.rectangle,
+      notchMargin: isFabVisible ? 4.0 : 0.0,
+      shape: CircularNotchedRectangle(),
     );
   }
 
@@ -119,7 +120,6 @@ class _MyHomePageState extends State<MyHomePage> {
       context: context,
       builder: (context) =>
           Material(
-            color: Color(0xff304049),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(16.0),
