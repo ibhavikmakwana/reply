@@ -14,11 +14,13 @@ class _MyHomePageState extends State<MyHomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   bool isFabVisible = true;
+  ScrollController _scrollController;
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: new Scaffold(
+        backgroundColor: Colors.white,
         key: _scaffoldKey,
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: fabUI(),
@@ -29,8 +31,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget bottomAppBarUI() {
-    IconData _arrowUp = Icons.arrow_drop_up;
-
     return BottomAppBar(
       child: new Row(
         mainAxisSize: MainAxisSize.max,
@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Row(
             children: <Widget>[
               IconButton(
-                icon: Icon(_arrowUp),
+                icon: Icon(Icons.arrow_drop_up),
                 color: Colors.white,
                 onPressed: () {
                   modalBottomSheet();
@@ -69,10 +69,8 @@ class _MyHomePageState extends State<MyHomePage> {
     return Visibility(
       visible: isFabVisible,
       child: FloatingActionButton(
-        backgroundColor: Colors.amberAccent,
         child: const Icon(
           Icons.edit,
-          color: Colors.blueGrey,
         ),
         onPressed: () {},
       ),
@@ -87,28 +85,18 @@ class _MyHomePageState extends State<MyHomePage> {
       // Let the ListView know how many items it needs to build
       itemCount: itemsModel.length,
       shrinkWrap: true,
+      controller: _scrollController,
       // Provide a builder function. This is where the magic happens! We'll
       // convert each item into a Widget based on the type of item it is.
       itemBuilder: (context, index) {
         final item = itemsModel[index];
         if (item.imagesData != null) {
           return ListItemWithImages(
-            userName: item.userName,
-            title: item.title,
-            time: item.time,
-            hasAttachment: item.doesHaveAttachment,
-            description: item.description,
-            imagesData: item.imagesData,
-            profilePic: item.profilePic,
+            item: item,
           );
         } else {
           return ListItemWithoutImages(
-            userName: item.userName,
-            title: item.title,
-            time: item.time,
-            hasAttachment: item.doesHaveAttachment,
-            description: item.description,
-            profilePic: item.profilePic,
+            item: item,
           );
         }
       },
@@ -119,54 +107,131 @@ class _MyHomePageState extends State<MyHomePage> {
     showModalBottomSheet(
       context: context,
       builder: (context) =>
-          Material(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(16.0),
-                topRight: Radius.circular(16.0),
+          Container(
+            color: Colors.transparent,
+            child: Container(
+              decoration: new BoxDecoration(
+                color: Color(0xFF17262A),
+                borderRadius: new BorderRadius.only(
+                  topLeft: const Radius.circular(16.0),
+                  topRight: const Radius.circular(16.0),
+                ),
               ),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                FlutterLogo(),
-                Expanded(
-                  child: ListView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  FlutterLogo(),
+                  Expanded(
+                    child: Container(
+                      decoration: new BoxDecoration(
+                        color: Color(0xFF304049),
+                        borderRadius: new BorderRadius.only(
+                          topLeft: const Radius.circular(16.0),
+                          topRight: const Radius.circular(16.0),
+                        ),
+                      ),
+                      child: ListView(
+                        children: <Widget>[
+                          new ListTile(
+                            leading: new Icon(
+                              Icons.inbox,
+                              color: Colors.white,
+                            ),
+                            title: new Text(
+                              'Inbox',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            onTap: () => null,
+                          ),
+                          new ListTile(
+                            leading: new Icon(
+                              Icons.star_border,
+                              color: Colors.white,
+                            ),
+                            title: new Text(
+                              'Starred',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            onTap: () => null,
+                          ),
+                          new ListTile(
+                            leading: new Icon(
+                              Icons.send,
+                              color: Colors.white,
+                            ),
+                            title: new Text(
+                              'Sent',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            onTap: () => null,
+                          ),
+                          new ListTile(
+                            leading: new Icon(
+                              Icons.delete,
+                              color: Colors.white,
+                            ),
+                            title: new Text(
+                              'Trash',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            onTap: () => null,
+                          ),
+                          new ListTile(
+                            leading: new Icon(
+                              Icons.error_outline,
+                              color: Colors.white,
+                            ),
+                            title: new Text(
+                              'Spam',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            onTap: () => null,
+                          ),
+                          new ListTile(
+                            leading: new Icon(
+                              Icons.drafts,
+                              color: Colors.white,
+                            ),
+                            title: new Text(
+                              'Drafts',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            onTap: () => null,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  new Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      new ListTile(
-                        leading: new Icon(Icons.inbox),
-                        title: new Text('Inbox'),
-                        onTap: () => null,
+                      Row(
+                        children: <Widget>[
+                          IconButton(
+                            icon: Icon(Icons.arrow_drop_down),
+                            color: Colors.white,
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.menu),
+                            color: Colors.white,
+                            onPressed: () {},
+                          ),
+                        ],
                       ),
-                      new ListTile(
-                        leading: new Icon(Icons.star_border),
-                        title: new Text('Starred'),
-                        onTap: () => null,
-                      ),
-                      new ListTile(
-                        leading: new Icon(Icons.send),
-                        title: new Text('Sent'),
-                        onTap: () => null,
-                      ),
-                      new ListTile(
-                        leading: new Icon(Icons.delete),
-                        title: new Text('Trash'),
-                        onTap: () => null,
-                      ),
-                      new ListTile(
-                        leading: new Icon(Icons.error_outline),
-                        title: new Text('Spam'),
-                        onTap: () => null,
-                      ),
-                      new ListTile(
-                        leading: new Icon(Icons.drafts),
-                        title: new Text('Drafts'),
-                        onTap: () => null,
+                      IconButton(
+                        icon: Icon(Icons.search),
+                        color: Colors.white,
+                        onPressed: () {},
                       ),
                     ],
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
     );

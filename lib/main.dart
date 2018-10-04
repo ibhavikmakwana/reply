@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reply/ui/Home.dart';
+import 'package:reply/utils/app_data.dart';
 
 void main() => runApp(new MyApp());
 
@@ -8,10 +9,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Reply',
+      title: AppData.appName,
+      showPerformanceOverlay: false,
       theme: ThemeData(
-          primarySwatch: Colors.blueGrey,
-          fontFamily: 'WorkSans'
+        primarySwatch: Colors.blueGrey,
+        accentColor: Colors.orange,
+        canvasColor: Colors.transparent,
+        fontFamily: 'WorkSans',
       ),
       home: MyHomePage(),
     );

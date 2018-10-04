@@ -11,6 +11,7 @@ class DetailView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white,
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Padding(
@@ -19,6 +20,7 @@ class DetailView extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
+                  mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
                     titleView(context),
                     aboutView(context),
@@ -41,20 +43,19 @@ class DetailView extends StatelessWidget {
       children: <Widget>[
         Expanded(
           flex: 9,
-          child: Hero(
-            tag: listItemModel.title,
-            child: Text(
-              "High school reunion",
-              softWrap: true,
-              style: TextStyle(fontSize: 48.0),
-            ),
+          child: Text(
+            listItemModel.title,
+            softWrap: true,
+            style: TextStyle(fontSize: 48.0),
           ),
         ),
-        Expanded(
-          child: InkWell(
-            radius: 24.0,
-            borderRadius: BorderRadius.circular(24.0),
-            onTap: () {},
+        InkWell(
+          borderRadius: BorderRadius.circular(24.0),
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
             child: Icon(
               Icons.keyboard_arrow_down,
             ),
@@ -69,9 +70,22 @@ class DetailView extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text("vbetrb"),
-            Text("vbetrb"),
+            Text(
+              "${listItemModel.userName} - ${listItemModel.time}",
+              style: Theme
+                  .of(context)
+                  .textTheme
+                  .title,
+            ),
+            Text(
+              "To me",
+              style: Theme
+                  .of(context)
+                  .textTheme
+                  .subhead,
+            ),
           ],
         ),
         CircleAvatar(
