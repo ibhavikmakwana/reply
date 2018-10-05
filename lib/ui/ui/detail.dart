@@ -47,7 +47,8 @@ class DetailView extends StatelessWidget {
           child: Text(
             listItemModel.title,
             softWrap: true,
-            style: TextStyle(fontSize: 48.0,
+            style: TextStyle(
+                fontSize: 48.0,
                 color: Colors.black,
                 fontWeight: FontWeight.bold),
           ),
@@ -102,7 +103,10 @@ class DetailView extends StatelessWidget {
 
   description() {
     return Container(
-      child: Text(loremIpsum, style: TextStyle(fontSize: 18.0),),
+      child: Text(
+        loremIpsum,
+        style: TextStyle(fontSize: 18.0),
+      ),
       margin: EdgeInsets.only(top: 8.0),
     );
   }
