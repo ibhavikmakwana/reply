@@ -17,6 +17,7 @@ class DetailView extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(2.0),
             child: Card(
+              elevation: 2.0,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
@@ -46,7 +47,9 @@ class DetailView extends StatelessWidget {
           child: Text(
             listItemModel.title,
             softWrap: true,
-            style: TextStyle(fontSize: 48.0),
+            style: TextStyle(fontSize: 48.0,
+                color: Colors.black,
+                fontWeight: FontWeight.bold),
           ),
         ),
         InkWell(
@@ -65,6 +68,9 @@ class DetailView extends StatelessWidget {
     );
   }
 
+  /*
+
+   */
   aboutView(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -77,30 +83,26 @@ class DetailView extends StatelessWidget {
               style: Theme
                   .of(context)
                   .textTheme
-                  .title,
+                  .subhead,
             ),
             Text(
               "To me",
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .subhead,
+              style: TextStyle(fontSize: 14.0),
             ),
           ],
         ),
         CircleAvatar(
-          backgroundColor: Colors.red,
-          child: FlutterLogo(
-            size: 24.0,
+          child: Image.network(
+            listItemModel.profilePic,
           ),
-        )
+        ),
       ],
     );
   }
 
   description() {
     return Container(
-      child: Text(loremIpsum),
+      child: Text(loremIpsum, style: TextStyle(fontSize: 18.0),),
       margin: EdgeInsets.only(top: 8.0),
     );
   }
