@@ -6,16 +6,16 @@ class ListItemModel {
   String description;
   String profilePic;
   List<ImageData> imagesData;
+  bool isSelected = false;
 
-  ListItemModel({
-    this.userName,
+  ListItemModel({this.userName,
     this.time,
     this.title,
     this.doesHaveAttachment,
     this.description,
     this.imagesData,
     this.profilePic,
-  });
+    this.isSelected});
 }
 
 class ImageData {

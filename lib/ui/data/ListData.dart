@@ -24,6 +24,7 @@ final List<ListItemModel> itemsModel = <ListItemModel>[
     description: "Cucumber Mask Facial has shipped",
     profilePic: "https://image.flaticon.com/icons/png/512/306/306473.png",
     imagesData: null,
+    isSelected: false,
   ),
   ListItemModel(
     userName: "Ali conors",
@@ -34,6 +35,7 @@ final List<ListItemModel> itemsModel = <ListItemModel>[
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque commodo cursus lorem quis euismod.",
     profilePic: "https://image.flaticon.com/icons/png/512/306/306473.png",
     imagesData: null,
+    isSelected: false,
   ),
   ListItemModel(
     userName: "Bonjor from Paris",
@@ -44,6 +46,7 @@ final List<ListItemModel> itemsModel = <ListItemModel>[
     "Here are some great shot from my trip, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque commodo cursus lorem quis euismod.",
     profilePic: "https://image.flaticon.com/icons/png/512/306/306473.png",
     imagesData: itemsImagesModel,
+    isSelected: false,
   ),
   ListItemModel(
     userName: "Trevor Hansem",
@@ -54,6 +57,7 @@ final List<ListItemModel> itemsModel = <ListItemModel>[
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque commodo cursus lorem quis euismod.",
     profilePic: "https://image.flaticon.com/icons/png/512/306/306473.png",
     imagesData: null,
+    isSelected: false,
   ),
   ListItemModel(
     userName: "Britta Holt",
@@ -64,6 +68,7 @@ final List<ListItemModel> itemsModel = <ListItemModel>[
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque commodo cursus lorem quis euismod.",
     profilePic: "https://image.flaticon.com/icons/png/512/306/306473.png",
     imagesData: null,
+    isSelected: false,
   ),
   ListItemModel(
     userName: "Paatrick Kelly",
@@ -74,6 +79,7 @@ final List<ListItemModel> itemsModel = <ListItemModel>[
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque commodo cursus lorem quis euismod.",
     profilePic: "https://image.flaticon.com/icons/png/512/306/306473.png",
     imagesData: null,
+    isSelected: false,
   ),
   ListItemModel(
     userName: "Josh Dillinger",
@@ -84,6 +90,7 @@ final List<ListItemModel> itemsModel = <ListItemModel>[
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque commodo cursus lorem quis euismod.",
     profilePic: "https://image.flaticon.com/icons/png/512/306/306473.png",
     imagesData: null,
+    isSelected: false,
   ),
   ListItemModel(
     userName: "Google Express",
@@ -94,6 +101,7 @@ final List<ListItemModel> itemsModel = <ListItemModel>[
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque commodo cursus lorem quis euismod.",
     profilePic: "https://image.flaticon.com/icons/png/512/306/306473.png",
     imagesData: itemsImagesModel,
+    isSelected: false,
   ),
   ListItemModel(
     userName: "Julie Ko",
@@ -104,6 +112,7 @@ final List<ListItemModel> itemsModel = <ListItemModel>[
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque commodo cursus lorem quis euismod.",
     profilePic: "https://image.flaticon.com/icons/png/512/306/306473.png",
     imagesData: itemsImagesModel,
+    isSelected: false,
   ),
   ListItemModel(
     userName: "Mama's Bakeery",
@@ -114,6 +123,7 @@ final List<ListItemModel> itemsModel = <ListItemModel>[
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque commodo cursus lorem quis euismod.",
     profilePic: "https://image.flaticon.com/icons/png/512/306/306473.png",
     imagesData: itemsImagesModel,
+    isSelected: false,
   ),
   ListItemModel(
     userName: "Google Express",
@@ -124,5 +134,6 @@ final List<ListItemModel> itemsModel = <ListItemModel>[
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque commodo cursus lorem quis euismod.",
     profilePic: "https://image.flaticon.com/icons/png/512/306/306473.png",
     imagesData: itemsImagesModel,
+    isSelected: false,
   ),
 ];
